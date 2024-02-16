@@ -4,7 +4,6 @@ def add_new_contact(contacts, new_contact, cellphone_number, email):
     contact_info = {"contact": new_contact, "cellphone": cellphone_number, "email": email, "favorite": False}
     contacts.append(contact_info)
     print(f"\n Contato {new_contact} , {cellphone_number} , {email} foi adicionado com sucesso! ✅")
-    # print(contacts)
     return
 
 def view_contact(contacts):
@@ -13,6 +12,19 @@ def view_contact(contacts):
         favorite_status = "⁜" if contact["favorite"] else " "
         contact_name = contact["contact"]
         print(f"\n {i}.[{favorite_status}] {contact_name}, {cellphone_number}, {email}.")
+    return
+
+def edit_contact(contacts, index_contact, new_contact_edited, cellphone_number_edited, email_edited):
+    adjusted_contact_index = int(index_contact) -1
+
+    if adjusted_contact_index >= 0 and adjusted_contact_index < len(contacts):
+        contacts[adjusted_contact_index]["contact"] = new_contact_edited
+        contacts[adjusted_contact_index]["cellphone"] = cellphone_number_edited
+        contacts[adjusted_contact_index]["email"] = email_edited
+
+        print(f"\n Tarefa {index_contact} atualizada para {new_contact_edited}, {cellphone_number_edited}, {email_edited}")
+    else:
+        print("\n Índice de tarefa inválido!")
     return
 
 contacts = []
@@ -39,7 +51,13 @@ while True:
         view_contact(contacts)
 
     elif choice == "3":
-        print("Choice 3 selected!")
+        view_contact(contacts)
+        index_contact = input("Digite o número do contato que gostaria editar: ")
+        new_contact_edited = input("Digite o nome do contato Āβ: ")
+        cellphone_number_edited = input("Digite o número do contato 📱: ")
+        email_edited = input("Digite o email do contato ✉️: ")
+
+        edit_contact(contacts, index_contact, new_contact_edited, cellphone_number_edited, email_edited)
 
     elif choice == "4":
         print("Choice 4 selected!")
