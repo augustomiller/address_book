@@ -10,8 +10,8 @@ def view_contact(contacts):
     print("\n Lista de contatos:")
 
     for i, contact in enumerate(contacts, start=1):
-        print(contacts)
-        favorite_status = "⁜" if contact["favorite"] else " "
+        #print(contacts)
+        favorite_status = "♡" if contact["favorite"] else " "
         contact_name = contact["contact"]
         cellphone_number = contact["cellphone"]
         email = contact["email"]
@@ -30,6 +30,12 @@ def edit_contact(contacts, index_contact, new_contact_edited, cellphone_number_e
         print(f"\n Tarefa {index_contact} atualizada para {new_contact_edited}, {cellphone_number_edited}, {email_edited}")
     else:
         print("\n Índice de tarefa inválido!")
+    return
+
+def add_to_favorite(contacts, index_contact_favorite):
+    adjusted_contact_index = int(index_contact_favorite) -1
+    contacts[adjusted_contact_index]["favorite"] = True
+    print(f"Contato {adjusted_contact_index}, adicionado aos favoritos!")
     return
 
 contacts = []
@@ -65,7 +71,10 @@ while True:
         edit_contact(contacts, index_contact, new_contact_edited, cellphone_number_edited, email_edited)
 
     elif choice == "4":
-        print("Choice 4 selected!")
+        view_contact(contacts)
+        index_contact_favorite = input("Digite o número do contato que deseja favoritar: ")
+        add_to_favorite(contacts, index_contact_favorite)
+
 
     elif choice == "5":
         print("Choice 5 selected!")
