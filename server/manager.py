@@ -7,10 +7,15 @@ def add_new_contact(contacts, new_contact, cellphone_number, email):
     return
 
 def view_contact(contacts):
-    print("Lista de contatos:")
+    print("\n Lista de contatos:")
+
     for i, contact in enumerate(contacts, start=1):
+        print(contacts)
         favorite_status = "⁜" if contact["favorite"] else " "
         contact_name = contact["contact"]
+        cellphone_number = contact["cellphone"]
+        email = contact["email"]
+
         print(f"\n {i}.[{favorite_status}] {contact_name}, {cellphone_number}, {email}.")
     return
 
@@ -44,7 +49,7 @@ while True:
     if choice == "1":
         new_contact = input("Digite o nome do contato Āβ: ")
         cellphone_number = input("Digite o número do contato 📱: ")
-        email = input("Digite o email do contato ✉️: ")
+        email = input("Digite o email do contato 📩: ")
         add_new_contact(contacts, new_contact, cellphone_number, email)
 
     elif choice == "2":
@@ -55,7 +60,7 @@ while True:
         index_contact = input("Digite o número do contato que gostaria editar: ")
         new_contact_edited = input("Digite o nome do contato Āβ: ")
         cellphone_number_edited = input("Digite o número do contato 📱: ")
-        email_edited = input("Digite o email do contato ✉️: ")
+        email_edited = input("Digite o email do contato 📩: ")
 
         edit_contact(contacts, index_contact, new_contact_edited, cellphone_number_edited, email_edited)
 
